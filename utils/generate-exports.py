@@ -31,14 +31,11 @@ def main():
     folderNames = [
         'state',
         'utils',
+        'scenes',
         'types/String',
         'types/Quark',
         'types/Atom',
         'types/Molecule',
-        'scenes/String',
-        'scenes/Quark',
-        'scenes/Atom',
-        'scenes/Molecule',
         'objects/String',
         'objects/Quark',
         'objects/Atom',
@@ -59,7 +56,6 @@ def main():
     folderNames = [
         'components',
         'objects',
-        'scenes',
         'types'
     ]
 
