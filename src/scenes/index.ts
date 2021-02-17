@@ -1,4 +1,4 @@
-import * as Default from './Default'
+import Default from './Default'
 
 export {
    Default,
