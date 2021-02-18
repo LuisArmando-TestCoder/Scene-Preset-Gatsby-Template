@@ -29,6 +29,6 @@
 
 - String `No dependencies`
 - Quark `String dependencies only`
-- Atom `String, Quark deendencies only`
-- Molecule `String, Quark, Atom deendencies only`
-- Compound `String, Quark, Atom, Molecule deendencies only`
+- Atom `String, Quark dependencies only`
+- Molecule `String, Quark, Atom dependencies only`
+- Compound `String, Quark, Atom, Molecule dependencies only`
