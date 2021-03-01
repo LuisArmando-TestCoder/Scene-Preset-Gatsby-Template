@@ -1,18 +1,22 @@
 import { useEffect, useState }  from 'react'
 import { promiseGetRecoil } from 'recoil-outside'
 
-export default (recoilState, {
-    transform = null,
-    fallbackValue = null,
+export default (recoilState, options = {
+    transform: null,
+    fallbackValue: null,
 }) => {
-    const [state, setState] = useState(fallbackValue)
+    const [state, setState] = useState(options.fallbackValue)
 
     useEffect(() => {        
         (
             async () => {
                 const value = await promiseGetRecoil(recoilState)
 
-                setState(transform ? transform(value) : value)
+                setState(
+                    options.transform
+                  ? options.transform(value)
+                  : value
+                )
             }
         )()
     }, [])
