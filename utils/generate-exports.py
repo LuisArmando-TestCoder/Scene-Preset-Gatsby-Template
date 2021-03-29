@@ -2,68 +2,58 @@ import os
 import fnmatch
 import re
 
-def getIndexExportContent(directories, additional):
+def getIndexExportContent(directories, additional, aType):
     importPrefix = ''
-    exportSuffix = 'export {\n'
-
+    exportSuffix = f'export {aType}' + '{\n'
+ 
     for directory in directories:
-        importPrefix += f'import {additional}{directory} from \'./{directory}\'\n'
+        importPrefix += f'import {additional} {directory} from \'./{directory}\'\n'
         exportSuffix += f'   {directory},\n'
-
+ 
     exportSuffix += '}\n'
-
+ 
     content = f'{importPrefix}\n{exportSuffix}'
-
+ 
     return content
 
-def createIndexExportFile(folderPath, additional = ''):
+def createIndexExportFile(folderPath, additional, aType):
     for _, directories, _ in os.walk(folderPath):
         if len(directories) > 0:
-
+ 
             file = open(f'{folderPath}/index.ts',"w+")
-
-            file.write(getIndexExportContent(directories, additional))
-
+ 
+            file.write(getIndexExportContent(directories, additional, aType))
+ 
             file.close()
         break
 
-def main():
-    folderNames = [
-        'state',
-        'utils',
-        'scenes',
-        'types/String',
-        'types/Quark',
-        'types/Atom',
-        'types/Molecule',
-        'objects/String',
-        'objects/Quark',
-        'objects/Atom',
-        'objects/Molecule',
-        'components/String',
-        'components/Quark',
-        'components/Atom',
-        'components/Molecule',
-    ]
-
+def setFolderExports(folderNames, additional = '', aType = ''):
     print('Automatic export defaults: ', folderNames)
-
+ 
     for folderName in folderNames:
         folderPath = f'../src/{folderName}'
+ 
+        createIndexExportFile(folderPath, additional, aType)
 
-        createIndexExportFile(folderPath)
+setFolderExports([
+    'utils',
+    'state',
+    'components/L0',
+    'components/L1',
+    'components/L2',
+    'components/L3',
+    'components/L4',
+])
 
-    folderNames = [
-        'components',
-        'objects',
-        'types'
-    ]
+setFolderExports([
+    'components',
+    'types',
+], '* as')
 
-    print('Automatic export all: ', folderNames)
-
-    for folderName in folderNames:
-        folderPath = f'../src/{folderName}'
-
-        createIndexExportFile(folderPath, '* as ')
-
-main()
+setFolderExports([
+    'types/L0',
+    'types/L1',
+    'types/L2',
+    'types/L3',
+    'types/L4',
+], '', 'type ')

@@ -27,8 +27,9 @@
 
 ## Project Atomic Design version for `./components`, `./types` and `./objects`
 
-- String `No dependencies`
-- Quark `String dependencies only`
-- Atom `String, Quark dependencies only`
-- Molecule `String, Quark, Atom dependencies only`
-- Compound `String, Quark, Atom, Molecule dependencies only`
+- L0 `No dependencies`
+- L1 where highest dependency is `L0`
+- L2 where highest dependency is `L1`
+- L3 where highest dependency is `L2`
+- L4 where highest dependency is `L3`
+- Etc...

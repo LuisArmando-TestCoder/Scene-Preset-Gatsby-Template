@@ -4,8 +4,11 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-module.exports = {
+ module.exports = {
   /* Your site config here */
+  flags: {
+    DEV_SSR: false
+  },
   plugins: [
     `gatsby-plugin-sass`,
     {
@@ -15,6 +18,6 @@ module.exports = {
         jsxPragma: `jsx`, // defaults to "React"
         allExtensions: true, // defaults to false
       },
-    }
+    },
   ],
 }

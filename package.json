@@ -31,6 +31,7 @@
     "recoil-outside": "^0.1.1",
     "sass": "^1.32.7",
     "scene-preset": "^0.1.5",
+    "ssr-window": "^3.0.0",
     "three": "^0.125.2"
   },
   "devDependencies": {
