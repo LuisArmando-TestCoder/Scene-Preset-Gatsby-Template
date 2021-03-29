@@ -1,16 +1,5 @@
 # Scene-Preset-Gatsby-Template
 
-- Three.js
-- scene-preset
-- Gatsby
-- TypeScript
-- Sass
-- WebGL
-- Recoil
-- HTML2Canvas
-- Greensock
-- qrious
-
 ## Get this template
 
 `gatsby new your-app-name https://github.com/LuisArmando-TestCoder/Scene-Preset-Gatsby-Template`
