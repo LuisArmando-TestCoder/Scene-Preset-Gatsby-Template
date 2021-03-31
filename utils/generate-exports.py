@@ -2,9 +2,9 @@ import os
 import fnmatch
 import re
 
-def getIndexExportContent(directories, additional, aType):
+def getIndexExportContent(directories, additional):
     importPrefix = ''
-    exportSuffix = f'export {aType}' + '{\n'
+    exportSuffix = 'export {\n'
  
     for directory in directories:
         importPrefix += f'import {additional} {directory} from \'./{directory}\'\n'
@@ -16,28 +16,34 @@ def getIndexExportContent(directories, additional, aType):
  
     return content
 
-def createIndexExportFile(folderPath, additional, aType):
+def createIndexExportFile(folderPath, additional):
     for _, directories, _ in os.walk(folderPath):
         if len(directories) > 0:
  
             file = open(f'{folderPath}/index.ts',"w+")
  
-            file.write(getIndexExportContent(directories, additional, aType))
+            file.write(getIndexExportContent(directories, additional))
  
             file.close()
         break
 
-def setFolderExports(folderNames, additional = '', aType = ''):
+def setFolderExports(folderNames, additional = ''):
     print('Automatic export defaults: ', folderNames)
  
     for folderName in folderNames:
         folderPath = f'../src/{folderName}'
  
-        createIndexExportFile(folderPath, additional, aType)
+        createIndexExportFile(folderPath, additional)
 
 setFolderExports([
     'utils',
     'state',
+    'scenes',
+    'objects/L0',
+    'objects/L1',
+    'objects/L2',
+    'objects/L3',
+    'objects/L4',
     'components/L0',
     'components/L1',
     'components/L2',
@@ -47,13 +53,5 @@ setFolderExports([
 
 setFolderExports([
     'components',
-    'types',
+    'objects',
 ], '* as')
-
-setFolderExports([
-    'types/L0',
-    'types/L1',
-    'types/L2',
-    'types/L3',
-    'types/L4',
-], '', 'type ')
